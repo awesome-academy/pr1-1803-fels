@@ -20,5 +20,6 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :show, :destroy] do
       resources :words, except: [:edit, :update]
     end
+    resources :words, only: [:index, :destroy]
   end
 end
