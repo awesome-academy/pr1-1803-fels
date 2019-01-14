@@ -9,9 +9,9 @@
       <%= link_to category.name, admin_categories_path, class: "pull-left" %>
       <div class="pull-right">
         <% if current_user.admin %>
-          <%= link_to "Add word", "#", class: "btn btn-primary " %>
+          <%= link_to "Add word", new_admin_category_word_path(category.id), class: "btn btn-primary " %>
           <%= link_to "Edit", "#", class: "btn btn-success " %>
-          <%= link_to "Delete", "#", class: "btn btn-danger" %>
+          <%= link_to "Delete", [:admin, category], method: :delete, data: { confirm: "You sure?"}, class: "btn btn-danger" %>
         <% else %>
           <%= link_to "Start Lesson", "#", class: "btn btn-primary" %>
         <% end %>

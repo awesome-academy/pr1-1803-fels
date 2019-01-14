@@ -1,9 +1,29 @@
 <% provide :title, @category.name %>
 <div class="row">
-  <aside class="col-md-4">
+  <aside class="col-md-12">
     <section>
       <h1>
         <%= @category.name %>
       </h1>
+      <div class="panel panel-body">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Words</th>
+              <th scope="col">Answer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @category.words.each do |word| %>
+              <tr>
+                <td><%= word.name %></td>
+                <td>
+                  <%= word.find_answers.name %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </section>
 </div>

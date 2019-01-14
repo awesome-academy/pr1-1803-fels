@@ -9,8 +9,10 @@
           <% if current_user.admin %>
             <li><%= link_to "Users", admin_users_path %></li>
             <li><%= link_to "Categories", admin_categories_path %></li>
+            <li><%= link_to "Words", admin_words_path %></li>
           <%else%>
             <li><%= link_to "Users", users_path %></li>
+            <li><%= link_to "Words", words_path %></li>
             <li><%= link_to "Categories", categories_path %></li>
           <% end %>
             <li class="dropdown">

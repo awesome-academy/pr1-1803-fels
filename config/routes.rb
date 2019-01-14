@@ -4,18 +4,20 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   get "/signup", to: "users#new"
   get "/show", to: "users#show"
-  delete "/logout", to: "sessions#destroy"
   resources :users do
     member do
       get :following, :followers
     end
   end
   resources :relationships, only: [:create, :destroy]
-  resources :categories
+  resources :categories, only: [:index, :show]
+  resources :lessons, only: [:create, :update, :show]
   resources :words, only: :index
   namespace :admin do
     root "users#index"
     resources :users, only: [:index, :destroy]
-    resources :categories, only: [:index, :show]
+    resources :categories, only: [:index, :show, :destroy] do
+      resources :words, except: [:edit, :update]
+    end
   end
 end

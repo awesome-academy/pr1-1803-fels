@@ -33,15 +33,15 @@ h1 {
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
+  color: #777;
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: #777;
 }
 
 p {
@@ -127,7 +127,6 @@ a.btn.btn-lg.btn-primary {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 100%;
   margin-bottom: 15px;
 }
 
@@ -171,10 +170,14 @@ input, textarea, select, .uneditable-input {
 
 #type_learned, #type_not_learned, #type_all, #search_word{
   width: auto;
+  display: inline-block;}
+.field_with_errors {
   display: inline-block;
 }
 
 a.btn.btn-lg.btn-primary, .btn-group-lg > a.btn.btn-primary {
     margin-top: 55px;
     margin: 0;
+.inline-row{
+  display: inline;
 }

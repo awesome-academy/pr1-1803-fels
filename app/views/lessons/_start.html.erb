@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-7 col-md-offset-3">
+    <%= form_for(@lesson) do |f| %>
+      <%= f.fields_for(:lesson_words) do |ff| %>
+        <%= f.label :name, ff.object.word.name %><br />
+        <% ff.object.word.answers.each do |item| %>
+          <%= ff.radio_button :selected_answer, item.id %> 
+          <%= item.name %><br />
+        <% end %>
+      <% end %>
+      <%= f.submit "Finish", data: { confirm: 'Do you want to finish the lesson?' } %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<h1>Word list</h1>
+<div class="form-inline center">
+  <%= form_tag({}, method: :get) do %>
+    <%= select_tag :category_id, options_for_select(@categories.pluck(:name, :id), params[:category_id]), class: "form-control" %>
+    <%= radio_button_tag :type, "learned", params[:type] == "learned" %> Learned
+    <%= radio_button_tag :type, "not_learned", params[:type] == "not_learned" %> Not Learned
+    <%= radio_button_tag :type, "all", params[:type] == "all" %> All Word
+    <%= submit_tag "filter", class: "btn btn-primary", id: "search_word" %>
+  <% end %>
+</div>
+<div class= "panel panel-body col-md-4 col-md-offset-4">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Word</th>
+        <th scope="col">Mean</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @words.each do |word| %>
+      <tr class = "table table-bordered">
+        <td><%= word.name %></td>
+        <td><%= word.category.name%></td>
+        <td><%= link_to "Delete", [:admin, word], method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger pull-right" %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate @words %>
+</div>

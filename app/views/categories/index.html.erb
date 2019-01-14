@@ -7,7 +7,7 @@
   <% @categories.each do |category| %>
     <li>
       <%= link_to category.name, category, class: "pull-left" %>
-      <%= link_to "Start Lesson", "#", class: "btn btn-primary pull-right" %>
+      <%= link_to "Start Lesson", lessons_path(category_id: category.id), :method => :post, class: "btn btn-primary pull-right" %>
     </li>
 
   <% end %>

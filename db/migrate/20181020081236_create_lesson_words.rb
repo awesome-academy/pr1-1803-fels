@@ -3,6 +3,7 @@ class CreateLessonWords < ActiveRecord::Migration[5.1]
     create_table :lesson_words do |t|
       t.integer :lesson_id
       t.integer :word_id
+      t.integer :selected_answer
 
       t.timestamps
     end
