@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181206130206) do
+ActiveRecord::Schema.define(version: 20181020090221) do
 
   create_table "activities", force: :cascade do |t|
     t.integer "user_id"
-    t.string "type"
+    t.string "activity_type"
     t.integer "object_id"
+    t.integer "action_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -23,9 +24,9 @@ ActiveRecord::Schema.define(version: 20181206130206) do
   create_table "answers", force: :cascade do |t|
     t.string "name"
     t.integer "word_id"
+    t.boolean "is_correct"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_correct"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -45,7 +46,6 @@ ActiveRecord::Schema.define(version: 20181206130206) do
   create_table "lessons", force: :cascade do |t|
     t.string "name"
     t.integer "status"
-    t.integer "score"
     t.integer "category_id"
     t.integer "user_id"
     t.datetime "created_at", null: false

@@ -20,7 +20,7 @@
       <% @words.each do |word| %>
       <tr>
         <td><%= word.name %></td>
-        <td><%= word.category.name%></td>
+        <td><%= word.find_answers.name %></td>
       </tr>
     <% end %>
     </tbody>

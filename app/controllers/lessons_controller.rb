@@ -37,6 +37,7 @@ before_action :logged_in_user, :verify_normal
   private
 
   def lesson_params
+    param.require(:lesson).permit(:id, :word_id, :user_id)
     params[:lesson][:status] = 1
     params.require(:lesson).permit :status, lesson_words_attributes: [:id,:selected_answer]
   end
