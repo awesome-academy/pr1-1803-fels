@@ -21,7 +21,7 @@
       <% @words.each do |word| %>
       <tr class = "table table-bordered">
         <td><%= word.name %></td>
-        <td><%= word.category.name%></td>
+        <td><%= word.find_answers.name %></td>
         <td><%= link_to "Delete", [:admin, word], method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger pull-right" %>
         </td>
       </tr>

@@ -17,13 +17,11 @@ end
 
 15.times do |n|
   name  = "Lesson #{n+1}"
-  status = "status"
-  score = 1
+  status = "finished"
   category_id = Category.first.id
   user_id = User.first.id
   Lesson.create!(name: name,
               status: status,
-              score: score,
               category_id: category_id,
               user_id: user_id)
 end
