@@ -1,19 +1,31 @@
-<h1> Word List </h1>
 <% provide :title, @user.name %>
+
+<h1> Word List </h1>
 <div class="row">
-  <aside class="col-md-4">
-    <section>
-      <h1>
-        <%= @user.name %>
-      </h1>
-        <%= @user.email %>
+  <aside class="col-md-3">
+    <section class="name">
+      <p><%= link_to @user.name, @user %></p>
+      <% if current_user? @user %>
+        <p><%= link_to t("user.number_word", word_count: @count),
+          words_path(condition: t("word.learned")) %></p>
+      <% end %>
     </section>
-  </aside>
     <section class="stats">
       <%= render "shared/stats" %>
     </section>
   </aside>
-  <div class="col-md-8">
-    <%= render "follow_form" if logged_in? %>
-  </div>
+  <div class="col-md-9">
+    <% if current_user?(@user) %>
+      <div class="col-md-6 col-md-offset-4">
+        <p>
+          <%= link_to t("word.word_all"), words_path,
+            class: "btn btn-success btn-lg" %>
+          <%= link_to t("categories.lessons"), categories_path,
+            class: "btn btn-warning btn-lg" %>
+        </p>
+      </div>
+    <% else %>
+      <%= render "follow_form" if logged_in? %><br/>
+    <% end %>
 </div>
+  <%= render "shared/activities", activities: @activities %>

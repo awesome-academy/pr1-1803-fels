@@ -173,3 +173,8 @@ input, textarea, select, .uneditable-input {
   width: auto;
   display: inline-block;
 }
+
+a.btn.btn-lg.btn-primary, .btn-group-lg > a.btn.btn-primary {
+    margin-top: 55px;
+    margin: 0;
+}

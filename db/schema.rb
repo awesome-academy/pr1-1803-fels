@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181030121836) do
+ActiveRecord::Schema.define(version: 20181020090221) do
 
   create_table "activities", force: :cascade do |t|
     t.integer "user_id"
-    t.string "type"
+    t.string "activity_type"
     t.integer "object_id"
+    t.integer "action_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -66,7 +67,7 @@ ActiveRecord::Schema.define(version: 20181030121836) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.boolean "admin"
+    t.boolean "admin", default: false
     t.string "remember_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -81,4 +82,5 @@ ActiveRecord::Schema.define(version: 20181030121836) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
 end

@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+   before_action :load_user, only: [:edit, :update, :show]
+   before_action :logged_in?
+
 
   def index
     @users = User.paginate page: params[:page], per_page:5
@@ -10,6 +13,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by id: params[:id]
+    @activities = @user.activities.order(created_at: :desc)
+        .paginate page: params[:page], per_page: 9
   end
 
   def create
@@ -58,5 +63,9 @@ private
   def correct_user
     user = User.find params[:id]
     redirect_to(root_url) unless current_user?(@user)
+  end
+
+  def load_user
+    @user = User.find_by id: params[:id]
   end
 end

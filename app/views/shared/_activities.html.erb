@@ -1,0 +1,15 @@
+<h2>Activity feed</h2>
+<table class="table">
+  <% activities.each do |activity| %>
+    <% if activity.follow? %>
+      <tr>
+        <td><%= @user.name %> vua follow xong user: <%= activity.target_object.name %> luc <%= time_ago_in_words activity.created_at %> truoc</td>
+      </tr>
+    <% elsif activity.unfollow? %>
+      <tr>
+        <td><%= @user.name %> vua unfollow  user: <%= activity.target_object.name %> luc <%= time_ago_in_words activity.created_at %> truoc</td>
+      </tr>
+    <% end %>
+  <% end %>
+<%= will_paginate @activities %>
+</table>
